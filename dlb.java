@@ -1,6 +1,6 @@
 
  
-public class dlb<T> {
+public class dlb{
  
 
 
@@ -60,8 +60,8 @@ public class dlb<T> {
      * @param val the value
      * @throws NullPointerException if {@code key} is {@code null}
      */
-    public void put(String key, T val) {
-       
+    public void put(String key) {
+       //method wont be used
     }
 
   
@@ -89,7 +89,7 @@ public class dlb<T> {
      * @return all keys in the symbol table as an {@code Iterable}
      */
     public Iterable<String> keys() {
-        
+        return(keysWithPrefix(""));
     }
 
     /**
@@ -99,13 +99,25 @@ public class dlb<T> {
      *     as an iterable
      */
     public Iterable<String> keysWithPrefix(String prefix) {
-        
+		Iterable Queue<String> strings = new Queue<String>();
+        StringBuilder s = prefix;
+		Node curr = root;
+		int i = 0
+		while(i<prefix.length)
+
+			while(curr.c != s.charAt(i) && curr != NULL){
+				curr = curr.right;
+			}
+			if(curr.c == s.charAt(i)){
+				curr=curr.down;
+				i++;
+			}
+			else{
+				return(strings);
+			}
     }
 
-    private void collect(Node x, StringBuilder prefix, Queue<String> results) {
-        
-        
-    }
+   
 
     /**
      * Returns all of the keys in the symbol table that match {@code pattern},
@@ -138,6 +150,7 @@ public class dlb<T> {
      * @throws NullPointerException if {@code key} is {@code null}
      */
     public void delete(String key) {
+		
     }
 
 
