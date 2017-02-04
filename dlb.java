@@ -13,6 +13,12 @@ public class dlb{
         private Node right;
 		private Node down;
 		private boolean isEnd;
+		
+		private Node(char n,Node r,Node d){
+			c = n;
+			right = r;
+			down = d;
+		}
     }
 
    /**
@@ -35,14 +41,22 @@ public class dlb{
 		//and we arent at the last char reurn false, if we travese all the way o the last char, we find it and the isEnd boolean is true, return true
 		for(int i = 0;i<key.length;i++){
 			char c = key.charAt(i);
-			while(curr.right != NULL){
-				
+			while(curr.right != NULL && c != curr.c){
+				curr = curr.right
+			}
+			if(curr.c == c){
+				curr = curr.down;
+			}
+			else{
+				return(false);
 			}
 		}
-			
+		return(true); 
+	}		
 
     /**
      * Does this symbol table contain the given key?
+     * @param key the key
      * @param key the key
      * @return {@code true} if this symbol table contains {@code key} and
      *     {@code false} otherwise
@@ -61,7 +75,26 @@ public class dlb{
      * @throws NullPointerException if {@code key} is {@code null}
      */
     public void put(String key) {
-       //method wont be used
+       
+	   Node curr = root;
+	   for(int i = 0;i<key.length;i++){
+		   char c = key.charAt(i);
+		   while(curr.right != NULL && curr.c != c){
+			   curr = curr.right;
+		   }
+		   if(curr.c == c){
+			   if(curr.down != NULL){
+				   curr = curr.down;
+			   }
+			   else{
+				   //have to create a new node to the left, then move down
+				   
+			   }
+		   }
+		   else{
+			   //create a new node to the right, then go down, maybe we increment i again here to 
+		   }
+	   }
     }
 
   
@@ -82,67 +115,6 @@ public class dlb{
         return size() == 0;
     }
 
-    /**
-     * Returns all keys in the symbol table as an {@code Iterable}.
-     * To iterate over all of the keys in the symbol table named {@code st},
-     * use the foreach notation: {@code for (Key key : st.keys())}.
-     * @return all keys in the symbol table as an {@code Iterable}
-     */
-    public Iterable<String> keys() {
-        return(keysWithPrefix(""));
-    }
-
-    /**
-     * Returns all of the keys in the set that start with {@code prefix}.
-     * @param prefix the prefix
-     * @return all of the keys in the set that start with {@code prefix},
-     *     as an iterable
-     */
-    public Iterable<String> keysWithPrefix(String prefix) {
-		Iterable Queue<String> strings = new Queue<String>();
-        StringBuilder s = prefix;
-		Node curr = root;
-		int i = 0
-		while(i<prefix.length)
-
-			while(curr.c != s.charAt(i) && curr != NULL){
-				curr = curr.right;
-			}
-			if(curr.c == s.charAt(i)){
-				curr=curr.down;
-				i++;
-			}
-			else{
-				return(strings);
-			}
-    }
-
-   
-
-    /**
-     * Returns all of the keys in the symbol table that match {@code pattern},
-     * where . symbol is treated as a wildcard character.
-     * @param pattern the pattern
-     * @return all of the keys in the symbol table that match {@code pattern},
-     *     as an iterable, where . is treated as a wildcard character.
-     */
-    public Iterable<String> keysThatMatch(String pattern) {
-        
-    }
-
- 
-    /**
-     * Returns the string in the symbol table that is the longest prefix of {@code query},
-     * or {@code null}, if no such string.
-     * @param query the query string
-     * @return the string in the symbol table that is the longest prefix of {@code query},
-     *     or {@code null} if no such string
-     * @throws NullPointerException if {@code query} is {@code null}
-     */
-    public String longestPrefixOf(String query) {
-
-    }
-
  
     /**
      * Removes the key from the set if the key is present.
@@ -150,7 +122,7 @@ public class dlb{
      * @throws NullPointerException if {@code key} is {@code null}
      */
     public void delete(String key) {
-		
+		//dont need to implement
     }
 
 
