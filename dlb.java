@@ -18,6 +18,7 @@ public class dlb{
 			c = n;
 			right = r;
 			down = d;
+			isEnd = false;
 		}
     }
 
@@ -76,26 +77,43 @@ public class dlb{
      */
     public void put(String key) {
        
-	   Node curr = root;
-	   for(int i = 0;i<key.length;i++){
-		   char c = key.charAt(i);
-		   while(curr.right != NULL && curr.c != c){
-			   curr = curr.right;
-		   }
-		   if(curr.c == c){
-			   if(curr.down != NULL){
-				   curr = curr.down;
-			   }
-			   else{
-				   //have to create a new node to the left, then move down
-				   
-			   }
-		   }
-		   else{
-			   //create a new node to the right, then go down, maybe we increment i again here to 
-		   }
-	   }
-    }
+	    Node curr = root;
+	    for(int i = 0;i<key.length;i++){
+	  	    char c = key.charAt(i);
+		    while(curr.right != NULL && curr.c != c){
+				curr = curr.right;
+		    }
+		    if(i != key.length-1){
+			    if(curr.c == c){
+				    if(curr.down != NULL){
+						curr = curr.down;
+				    }
+				    else{
+						curr.down = new Node(key.charAt(i+1),NULL,NULL);
+						curr = curr.down;
+					   
+				    }
+			    }
+			    else{
+				    curr.right = new Node(c,NULL,NULL);
+				    curr = curr.right;
+				    curr.down = new Node(key.charAt(i+1);
+				    curr = curr.down;
+			    }
+			
+			}
+			else{
+				//if its the last character then we have to make sure that the boolean is set to true, constructor for the NOde class automatically sets the boolean to false
+				if(curr.c == c){
+					curr.isEnd = true;
+				}
+				else{
+					curr.right = new Node(c,NULL,NULL);
+					curr = curr.right;
+					curr.isEnd = true;
+				}
+			}
+		}
 
   
 
