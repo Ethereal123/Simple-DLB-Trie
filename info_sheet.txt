@@ -6,27 +6,27 @@ You must submit an information sheet with every assignment.  Also be sure
 to submit all materials following the procedures described on the
 submission procedures page.
 
-Name:  
+Name:  Ben Sollecito
 
-Lecture section:  
+Lecture section:  TuTh 2:30 208B Cathedral of Learning
 
-Recitation day and time:  
+Recitation day and time:  Fri 1 pm
 
-Assignment #:  
+Assignment #:  Project1
 
-Program due date:  
+Program due date:  2/9/17
 
-Handed in date:  
+Handed in date:  2/9/17
 
 Source code file name(s):
-
-
-
-
+dlb.java
+pw_check.java
 
 
 
 Other file name(s) (if relevant):
+ST_approach.txt
+dictionary.txt
 
 
 
@@ -35,6 +35,7 @@ Other file name(s) (if relevant):
 
 
 Does your program run without error?:
+yes
 
 If not, what is/are the error(s) and which parts of your program run
 correctly?:
@@ -47,6 +48,9 @@ correctly?:
 
 Additional comments to the grader:
 
+In all of the trials I did, the find operation took between 60 - 80 seconds to complete
+
+All times in the all_passwords are in nanoseconds
 
 
 

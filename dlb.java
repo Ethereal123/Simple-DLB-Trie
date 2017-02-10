@@ -14,7 +14,7 @@ public class dlb{
         private Node right;
 		private Node down;
 		private boolean isEnd;
-		float time;
+		long time;
 		
 		private Node(char n,Node r,Node d){
 			c = n;
@@ -40,7 +40,12 @@ public class dlb{
      * @throws NullPointerException if {@code key} is {@code null}
      */
     public Boolean contains(String key) {
-		Node curr = root;
+		
+    	if(root == null){
+    		return false;
+    	}
+    	
+    	Node curr = root;
 		//make a loop that first finds the char in the right going list, then if it finds it it moves down. if we reach the end of the right going list, or the down going list is null at the char
 		//and we arent at the last char reurn false, if we travese all the way o the last char, we find it and the isEnd boolean is true, return true
 		for(int i = 0;i<key.length();i++){
@@ -49,17 +54,28 @@ public class dlb{
 				curr = curr.right;
 			}
 			if(curr.c == c){
-				curr = curr.down;
+				if(curr.down != null && i != key.length()-1){
+					curr = curr.down;
+				}
+				else if(curr.down == null && i != key.length()-1){
+					return false;
+				}
+				else{
+					return(curr.isEnd);
+				}
 			}
 			else{
 				return(false);
 			}
 		}
-		return(true); 
+		return false;
 	}	
 
 
-	public float gets(String key) {
+	public long gets(String key) {
+		if(root == null){
+			return -1;
+		}
 		Node curr = root;
 		//make a loop that first finds the char in the right going list, then if it finds it it moves down. if we reach the end of the right going list, or the down going list is null at the char
 		//and we arent at the last char reurn false, if we travese all the way o the last char, we find it and the isEnd boolean is true, return true
@@ -69,10 +85,18 @@ public class dlb{
 				curr = curr.right;
 			}
 			if(curr.c == c){
-				curr = curr.down;
+				if(curr.down != null && i != key.length()-1){
+					curr = curr.down;
+				}
+				else if(curr.down == null && i != key.length()-1){
+					return(-1);
+				}
+				else{
+					return(curr.time);
+				}
 			}
 			else{
-				return(0);
+				return(-1);
 			}
 		}
 		return(curr.time); 
@@ -95,7 +119,7 @@ public class dlb{
      * @param val the value
      * @throws NullPointerException if {@code key} is {@code null}
      */
-    public void put(String key, float value) {
+    public void put(String key, long value) {
        
 		if(root == null){
 			root = new Node(key.charAt(0),null,null);
